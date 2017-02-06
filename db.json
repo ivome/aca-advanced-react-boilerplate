@@ -1,3 +1,11 @@
 {
-  "movies": []
+  "teasers": [
+    {
+      "_id": 1,
+      "title": "First teaser",
+      "description": "This is a beautiful description for a fancy teaser",
+      "buttonText": "Read more",
+      "url": "http://www.google.com/"
+    }
+  ]
 }

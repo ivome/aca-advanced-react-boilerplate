@@ -7,7 +7,7 @@ import {
   MenuItem
  } from 'react-bootstrap';
 
-const Navagationbar = props => {
+const NavigationBar = props => {
   return (
     <Navbar>
       <Navbar.Header>
@@ -29,4 +29,4 @@ const Navagationbar = props => {
     </Navbar>
   );
 };
-export default Navagationbar;
+export default NavigationBar;

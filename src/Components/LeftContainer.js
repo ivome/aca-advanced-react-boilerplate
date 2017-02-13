@@ -18,7 +18,7 @@ const LeftContainer = props => {
           />
         </Col>
         <Col xs={6} md={4} smHidden xsHidden>
-          <Sidebar />
+          <Sidebar linkText={props.linkText} />
         </Col>
       </Row>
     </Grid>

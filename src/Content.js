@@ -8,7 +8,7 @@ const Content = props => {
       <p>{props.description}</p>
       <ButtonToolbar>
         <Button href={props.url}>{props.buttonText}</Button>
-        <Button bsStyle="danger">Remove</Button>
+        <Button bsStyle="danger" onClick={props.onRemoveClick}>Remove</Button>
       </ButtonToolbar>
     </Col>
   );
@@ -20,5 +20,6 @@ Content.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired
+  buttonText: PropTypes.string.isRequired,
+  onRemoveClick: PropTypes.func.isRequired
 };

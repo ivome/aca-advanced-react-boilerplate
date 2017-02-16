@@ -19,6 +19,7 @@ const JumboContent = props => {
               description={content.description}
               url={content.url}
               buttonText={content.buttonText}
+              onRemoveClick={() => props.onRemoveContent(content._id)}
             />
           );
         })
@@ -33,5 +34,6 @@ export default JumboContent;
 JumboContent.propTypes = {
   jumbotronContent: PropTypes.string.isRequired,
   jumbotronHeader: PropTypes.string.isRequired,
-  teasers: PropTypes.array.isRequired
+  teasers: PropTypes.array.isRequired,
+  onRemoveContent: PropTypes.func.isRequired
 };

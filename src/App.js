@@ -38,7 +38,17 @@ class App extends Component {
     axios.post('http://localhost:4000/teasers', attributes)
       .then(resp => {
         this.setState({
-          content: [...this.state.content, resp.data]
+          teasers: [...this.state.teasers, resp.data]
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  handleDeleteContent(id) {
+    axios.delete(`http://localhost:4000/teasers/${id}`)
+      .then(() => {
+        this.setState({
+          teasers: this.state.teasers.filter(teaser => teaser._id !== id)
         });
       })
       .catch(err => console.log(err));
@@ -54,6 +64,7 @@ class App extends Component {
               jumbotronHeader={this.state.jumbotronHeader}
               jumbotronContent={this.state.jumbotronContent}
               teasers={this.state.teasers}
+              onRemoveContent={this.handleDeleteContent.bind(this)}
             />
             <SideNav />
           </Row>

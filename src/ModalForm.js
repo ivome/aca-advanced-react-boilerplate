@@ -7,6 +7,7 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
+import './ModalForm.css';
 
 function FieldGroup({ id, label, help, ...props }) {
   return (
@@ -23,6 +24,7 @@ const ModalForm = React.createClass({
   getInitialState() {
     return {
       showModal: false,
+      buttonObject: {}
     };
   },
 
@@ -34,11 +36,16 @@ const ModalForm = React.createClass({
     this.setState({ showModal: true });
   },
 
+  onInputChange(event) {
+    const buttonObject = this.state.buttonObject;
+    buttonObject[event.target.name] = event.target.value;
+    this.setState({buttonObject});
+  },
+
   handleSubmit(event) {
     event.preventDefault();
 
-    const {title, description, buttonText, url} = this.state;
-    this.props.onSubmit({title, description, buttonText, url});
+    this.props.onSubmit(this.state.buttonObject);
 
     this.setState({ showModal: false });
   },
@@ -47,7 +54,9 @@ const ModalForm = React.createClass({
     return (
       <div>
         <Button
+          bsSize="large"
           bsStyle="info"
+          className="modal-button"
           onClick={this.open}
         >
           Add Content
@@ -61,16 +70,20 @@ const ModalForm = React.createClass({
                 id="formControlsText"
                 type="text"
                 label="Title"
+                name="title"
                 placeholder="Enter title"
-                value={this.title}
+                value={this.state.title}
+                onChange={(event) => this.onInputChange(event)}
               />
 
               <FormGroup controlId="formControlsTextarea">
                 <ControlLabel>Description</ControlLabel>
                 <FormControl
                   componentClass="textarea"
+                  name="description"
                   placeholder="Enter description"
-                  value={this.description}
+                  value={this.state.description}
+                  onChange={(event) => this.onInputChange(event)}
                 />
               </FormGroup>
 
@@ -78,16 +91,20 @@ const ModalForm = React.createClass({
                 id="formControlsText"
                 type="text"
                 label="Button text"
+                name="buttonText"
                 placeholder="Enter button text"
-                value={this.buttonText}
+                value={this.state.buttonText}
+                onChange={(event) => this.onInputChange(event)}
               />
 
               <FieldGroup
                 id="formControlsText"
                 type="text"
                 label="Url"
+                name="url"
                 placeholder="Enter url"
-                value={this.url}
+                value={this.state.url}
+                onChange={(event) => this.onInputChange(event)}
               />
 
               <Button type="submit">Submit</Button>

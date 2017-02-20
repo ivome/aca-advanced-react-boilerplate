@@ -1,0 +1,13 @@
+.teasers {
+  margin-bottom: 30px;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.AddTeaserModal {
+  text-align: center;
+}

@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 
-const NavComponent = () => {
+const NavComponent = (props) => {
   return (
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">Replace me with a prop</a>
+          <a href="#">{props.project}</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem eventKey={1} active href="#">Link prop</NavItem>
-          <NavItem eventKey={2} href="#">Link prop</NavItem>
-          <NavItem eventKey={3} href="#">Link prop</NavItem>
+          <NavItem eventKey={1} active href="#">{props.navLinks.link1}</NavItem>
+          <NavItem eventKey={2} href="#">{props.navLinks.link2}</NavItem>
+          <NavItem eventKey={3} href="#">{props.navLinks.link3}</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -22,3 +22,8 @@ const NavComponent = () => {
 };
 
 export default NavComponent;
+
+NavComponent.propTypes = {
+  project: PropTypes.string.isRequired,
+  navLinks: PropTypes.object.isRequired
+};
